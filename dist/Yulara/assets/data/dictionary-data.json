@@ -1,0 +1,9 @@
+[
+    {"id":1,"russianword":"собака","sinhalaword":"බල්ලා","sex":"male"},
+    {"id":8,"russianword":"дерево","sinhalaword":"ගස" ,"sex":"female"},
+    {"id":3,"russianword":"you","sinhalaword":"ඔබ"  ,"sex":"male"},
+    {"id":4,"russianword":"Language","sinhalaword":"භාෂාව"  ,"sex":"male"},
+    {"id":3,"russianword":"any","sinhalaword":"ඕනෑම"  ,"sex":"male"},
+    {"id":9,"russianword":"pu","sinhalaword":"ඕනෑම"  ,"sex":"male"}
+
+  ]

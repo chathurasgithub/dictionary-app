@@ -1,0 +1,79 @@
+<div class="card mt-4">
+  <div class="card-header">
+    <b><h5>Online Russian-Sinhala Dictionary</h5>    </b>
+  </div>
+</div>
+<!-- /.card -->
+
+
+<!-- search box Stars-->
+<div class="card mt-4">
+  <div class="card-body">
+<div class="dictionary">
+  <p>{{errorMsg}}</p>
+<form #userForm="ngForm">
+   
+<input #word type="text" required (keyup)="onKeyUp($event)" placeholder="Russian to Sinhala Dictionary" value="" name="word" [(ngModel)]="SearchingdictionaryWord">
+<button (click)="onClick(word.value)" type="button"><i class="fa fa-search"></i></button>
+<div align="right"><div align="right" *ngIf="loadingSpinnerActive" class="spinner spinner-small spinner-blue spinner-slow"></div></div>
+</form>
+  
+</div>
+  </div>
+</div>
+
+
+
+<!-- search box Ends -->
+
+<!-- Error Area -->
+ <div *ngIf="isWordNotFound" class="card mt-4">
+    <div class="card-header">
+        <b>Did you mean?
+          
+           </b>
+    </div>
+    <div class="card-body">
+       <ul *ngFor="let suggestedWord of suggestedWordArray; index as i">
+        <!-- <p>{{i+1}}.&nbsp;&nbsp;&nbsp; {{suggestedWord}} </p> -->
+         <p (click)="onClick(suggestedWord)" class="button padding" style="margin:0; cursor: pointer; text-decoration: italic; color:#276DFA; font-weight: bold;"><a style="text-decoration: none; color:#276DFA; font-weight: bold; padding:5px 10px; display:block;">{{suggestedWord}}</a></p>
+         <hr>
+       </ul>
+    </div>
+    </div>     
+ 
+<!-- Error Area ends-->
+
+    <div *ngIf="!isWordNotFound && resultDictionWordRecordIdLength" class="card card-outline-secondary my-4">
+        <div class="card-header">
+          <b>Meaning of : &nbsp;&nbsp;</b> <i>{{resultDictionWordRecordTerm}}</i> <small class="text-muted"> &nbsp;&nbsp;{{resultDictionWordRecordCategory}}</small>
+        </div>
+        <div class="card-body">
+          <div *ngFor="let meaning of resultDictionWordRecordMeaning; index as i">
+          <p>{{i+1}}.&nbsp;&nbsp;&nbsp; {{meaning}} </p>
+          <hr>
+        </div>
+        <div class="card-header">
+            <b>Example</b>
+        </div>
+        <div class="card-body">
+            {{resultDictionWordRecordExample}} 
+        </div>
+        </div>
+      </div>
+
+
+<!-- /.card -->
+
+
+<!-- search box Testing to be deleted-->
+<!-- <div class="card mt-4">
+  
+    <h3>{{errorMsg}}</h3>
+      <ul *ngFor="let dictionaryWord of dictionaryWords">
+        <li>{{dictionaryWord.id}} - {{dictionaryWord.russianword}} - {{dictionaryWord.sinhalaword}}</li>
+      </ul>
+  
+    </div> -->
+    
+    <!-- search box Ends -->

@@ -1,0 +1,110 @@
+<div class="card mt-4">
+  <div class="card-header">
+    <b><h5>Contact Us</h5>    </b>
+  </div>
+</div>
+<!-- /.card -->
+
+<!-- box Stars-->
+
+<div class="container">
+<div class="row">
+<div class="col">
+ 
+  <div class="card card-outline-secondary my-4">
+    <div class="card-header">
+      <p><b>We are here to answer any questions you may have about our services. Reach out to us and we'll respond as soon as we can.</b></p>
+    </div>
+    <div class="card-body">
+
+    <div class="text-success" *ngIf="isSubmitted"><b>We Received your message, We will Contact you shortly..<br><br>
+         <input (click)="btnHidden()" [hidden]="isHidden" type="submit" class="btn btn-success btn-send" value="Another message">
+    </b></div>
+
+      <form #contactForm="ngForm" *ngIf="!isSubmitted" id="contact-form" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="controls">
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Firstname *</label>
+                        <input id="form_name" #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched" required [(ngModel)]="ContactMsgModel.firstName" type="text" name="firstname" class="form-control" placeholder="Please enter your firstname *">
+                        <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">First name is required</small>
+                    </div>
+                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_lastname">Lastname *</label>
+                        <input id="form_lastname" #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched"  required [(ngModel)]="ContactMsgModel.lastName" type="text" name="lastname" class="form-control" placeholder="Please enter your lastname *">
+                        <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">Last name is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_email">Email *</label>
+                        <input id="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [(ngModel)]="ContactMsgModel.email" type="email" name="email" class="form-control" placeholder="Please enter your email *">
+                      
+                        <div *ngIf="email.errors && (email.touched && email.invalid)">
+                            <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
+                            <small class="text-danger" *ngIf="email.errors.pattern">Email should be a valid email address</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_phone">Phone *</label>
+                        <input id="phone" #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" required [(ngModel)]="ContactMsgModel.phone" type="text" name="phone" class="form-control" placeholder="Please enter your phone number *">
+                        <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="form_message">Message *</label>
+                        <textarea id="form_message" #message="ngModel" [class.is-invalid]="message.invalid && message.touched" required [(ngModel)]="ContactMsgModel.message" name="message" class="form-control" placeholder="Please enter your message *" rows="4"></textarea>
+                        <small class="text-danger" [class.d-none]="message.valid || message.untouched">Message is required</small>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input [disabled]="contactForm.form.invalid" type="submit" class="btn btn-success btn-send" value="Send message">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+        </div>
+    
+    </form>
+    </div>
+  </div> 
+
+
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+  <div class="col">
+
+      <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            <b>Address </b>
+          </div>
+          <div class="card-body">
+            <p>{{fullAddress}}</p>
+            <small class="text-muted"></small>
+          </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+<!-- box Ends -->
